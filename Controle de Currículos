@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Currículos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow-x: auto;
+            display: block;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f8f8;
+            cursor: pointer;
+        }
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .search {
+            display: flex;
+            gap: 10px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            table {
+                font-size: 12px;
+            }
+            th, td {
+                padding: 8px;
+            }
+            .search {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Controle de Currículos</h1>
+        <input type="text" id="name" placeholder="Nome do candidato">
+        <input type="email" id="email" placeholder="E-mail do candidato">
+        <input type="text" id="phone" placeholder="Telefone do candidato">
+        <input type="text" id="position" placeholder="Cargo desejado">
+        <input type="date" id="date">
+        <select id="status">
+            <option value="Pendente">Pendente</option>
+            <option value="Aprovado">Aprovado</option>
+            <option value="Rejeitado">Rejeitado</option>
+        </select>
+        <input type="file" id="resumeFile" accept=".pdf,.doc,.docx">
+        <button onclick="addResume()">Adicionar</button>
+        
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="Buscar por nome" onkeyup="searchTable()">
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Nome</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                    <th>Cargo</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th>Arquivo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="resumeTable">
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
